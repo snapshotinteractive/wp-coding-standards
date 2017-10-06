@@ -6,7 +6,7 @@
 *   Foundation 6.4 (required) [https://foundation.zurb.com/sites/docs](https://foundation.zurb.com/sites/docs)
 *   Slick Carousel [http://kenwheeler.github.io/slick](http://kenwheeler.github.io/slick) (for sliders and carousels)
 *   Lity [https://sorgalla.com/lity](https://sorgalla.com/lity) (for simple video modals)
-*   fanceyBox3 [http://fancyapps.com/fancybox/3](http://fancyapps.com/fancybox/3) (for more functionality with your video/photo modals)
+*   fancyBox3 [http://fancyapps.com/fancybox/3](http://fancyapps.com/fancybox/3) (for more functionality with your video/photo modals)
 *   SlickNav (mobile navigation creation) [http://slicknav.com](http://slicknav.com) (or Foundation's topbar nav)
 *   HTML5
 *   CSS3
