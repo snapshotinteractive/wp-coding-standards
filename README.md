@@ -46,6 +46,18 @@ You can visit [https://generatewp.com](https://generatewp.com) to help build the
 
 WP-CLI can also be used
 
+## Advanced Custom Fields
+
+The general rule of thumb is that all content on every page or post should be easily manageable by the client once a build is complete. In many cases we can achieve this by simply using the WordPress content editor, the post thumbnail, or post/taxonomy queries to find the content we need from content areas that are already built into WordPress. However, for custom sites this is often insufficient, and we rule out page builder plugins because of their overhead and general clunkiness.
+
+You may be tempted to hardcode certain HTML elements into a template because you can't figure out how to work it into the editor, and creating custom metaboxes is a headache. [Advanced Custom Fields Pro (ACF)](https://www.advancedcustomfields.com/resources/) is our solution for this. You can create any number of field configurations easily through ACF and assign them to specific page templates, post types, taxonomies, widgets, and much more.
+
+A good use case here is if you have a design for a staff directory page, and when you click on a staff member's headshot you are directed to a bio page. This bio page might have the staff member's name, job title, email address, and various social media profile links in addition to his or her full bio. Cramming all of that into the WordPress editor and adding various `span` tags with assigned classes for formatting makes it really easy for a client or less keen developer to accidentally overwrite or erase your formatting in the future. In this instance, you'd likely have created a custom post type for `staff` and we'd suggest having unique custom fields for `job_title`, `email`, `facebook`, and `twitter`. Then in the template file, retrieving this content is as easy as using `get_field()`.
+
+In some instances, you need editable content on archive pages, or global content such as the site's header or footer. In these instances you can either create WordPress widgets or use [ACF's options page](https://www.advancedcustomfields.com/resources/options-page/) to easily access and edit content.
+
+For more information on how to use ACF, see its [documentation](https://www.advancedcustomfields.com/resources/).
+
 ## Plugins
 
 ### When to Use Plugins
