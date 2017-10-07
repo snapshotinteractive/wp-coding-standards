@@ -177,6 +177,8 @@ Below are the main plugins that SnapShot Interactive uses in most Wordpress webs
 
 Use the following project structure for custom theme development. The SnapShot basetheme already reflects this structure with the exception of Node, Sass, or compiled files (we do not currently have an official process for using such tools or deployment, but we've included a structure for them below for guidance in the event that we do use them from time to time when appropriate). These directories are noted with an asterisk `*`.
 
+**Freelancers/Developer partners must obtain written permission before using Sass or other NPM build tools on any SnapShot sites**
+
     |- acf-json/ _____________________________ # Enables Advanced Custom Fields local JSON field settings (https://www.advancedcustomfields.com/resources/local-json/)
     |- assets/
     |  |- img/ _______________________________ # Theme images
