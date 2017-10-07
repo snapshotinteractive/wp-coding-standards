@@ -255,6 +255,7 @@ require_once get_template_directory() . '/inc/functions-post-types.php';
  * Register navigation menus.
  */
 require_once get_template_directory() . '/inc/functions-nav.php';
+
 /**
  * Enqueue scripts and styles.
  */
