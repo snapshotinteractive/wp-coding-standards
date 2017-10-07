@@ -1,4 +1,4 @@
-# SnapShot Interactive WordPress Development Standards
+# SnapShot Interactive WordPress Coding Standards
 
 ## Default Platforms / Frameworks
 
