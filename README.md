@@ -228,7 +228,6 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [{.jshintrc,*.json,*.yml}]
-indent_style = space
 indent_size = 2
 
 [{*.txt,wp-config-sample.php}]
