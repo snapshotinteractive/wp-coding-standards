@@ -77,6 +77,8 @@ For more information on how to use ACF, see its [documentation](https://www.adva
 
 Below are the main plugins that SnapShot Interactive uses in most Wordpress websites. Others are added from time to time on an as needed basis but the ones below should cover 90-100% of what is needed from a basic wordpress site.
 
+**Freelancers/Developer partners must receive written authorization before installing or using any third-party plugins on SnapShot websites that are not included on this list.**
+
 ### Vetted Plugins
 
 <table>
