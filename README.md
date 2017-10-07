@@ -222,8 +222,12 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.js]
-indent_size = 4
+[{.jshintrc,*.json,*.yml}]
+indent_style = space
+indent_size = 2
+
+[{*.txt,wp-config-sample.php}]
+end_of_line = crlf
 
 [*.md]
 trim_trailing_whitespace = false
