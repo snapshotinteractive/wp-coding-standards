@@ -207,6 +207,27 @@ When using Sass, the `scss` folder should be organized further into component di
     |  |- admin.scss
     |  |- app.scss
     |  |- editor.scss
+    
+In addition to theme files, we suggest using [`EditorConfig`](http://editorconfig.org/) so that, regardless of what IDE or text editor you choose, syntax and formatting are consistent from project to project and developer to developer. You would create an `.editorconfig` file in the root of the project that looks like this:
+
+```
+# http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.js]
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+```
 
 ## Modular PHP
 
@@ -247,17 +268,17 @@ Two examples of code that can be easily reused from project to project are custo
 <?php
 // Define directories for post types and taxonomies
 $directories = array(
-  'post_types'  => get_template_directory() . '/inc/post-types/',
-  'taxonomies'  => get_template_directory() . '/inc/taxonomies/'
+    'post_types'  => get_template_directory() . '/inc/post-types/',
+    'taxonomies'  => get_template_directory() . '/inc/taxonomies/'
 );
 
 foreach ( $directories as $key => $directory ) {
-  $dir = new DirectoryIterator( $directory );
+    $dir = new DirectoryIterator( $directory );
 
-  foreach ( $dir as $fileinfo ) {
-    if ( ! $fileinfo->isDot() ) {
-      require $directory . $fileinfo->getFilename();
+    foreach ( $dir as $fileinfo ) {
+        if ( ! $fileinfo->isDot() ) {
+            require $directory . $fileinfo->getFilename();
+        }
     }
-  }
 }
 ```
