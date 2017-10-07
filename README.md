@@ -1,6 +1,19 @@
 # SnapShot Interactive WordPress Coding Standards
 
-## Default Platforms / Frameworks
+  * [Default Platforms and Frameworks](#default-platforms-and-frameworks)
+  * [Web Syntax Standards](#web-syntax-standards)
+  * [Custom Post Types and Taxonomies](#custom-post-types-and-taxonomies)
+    * [When to Use Custom Post Types](#when-to-use-custom-post-types)
+    * [What if the CPT Data is only being used on a single page?](#what-if-the-cpt-data-is-only-being-used-on-a-single-page)
+    * [Creating Custom Post Types and Taxonomies](#creating-custom-post-types-and-taxonomies)
+  * [Advanced Custom Fields](#advanced-custom-fields)
+  * [Plugin](#plugins)
+    * [When to Use Plugins](#when-to-use-plugins)
+    * [Vetted Plugins](#vetted-plugins)
+  * [Theme Structure](#theme-structure)
+  * [Modular PHP](#modular-php)
+
+## Default Platforms and Frameworks
 
 *   Latest WordPress Version (required) [http://wordpress.org](http://wordpress.org)
 *   Foundation 6.4 (required) [https://foundation.zurb.com/sites/docs](https://foundation.zurb.com/sites/docs)
@@ -26,7 +39,7 @@
 *   **HTML:** WordPress HTML Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/)
 *   **JavaScript:** WordPress JS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
 
-## Custom Post Types / Taxonomies
+## Custom Post Types and Taxonomies
 
 ### When to Use Custom Post Types
 
@@ -34,13 +47,13 @@ Custom post types are used for specific information that doesn’t fall under yo
 
 The ultimate goal of using Custom Post Types is to create ease of use for the client. A Custom Post Type puts the data front and center (left admin navigation) for the user so they can update it easily. For example if a client has a Board of Directors section; it would make sense to have a board of directors custom post type and using advanced custom fields pro (listed in plugins section) to create all the additional fields needed.
 
-#### What if the CPT Data is only being used on a single page?
+### What if the CPT Data is only being used on a single page?
 
 Some times you’ll have information that doesn’t need to be shared across the entire site and is only specific to a single page. You can use Advanced Custom Fields to create repeater fields applied to a specific template or page to create a list to loop through.
 
 [http://www.advancedcustomfields.com/resources/repeater/](http://www.advancedcustomfields.com/resources/repeater/)
 
-### Creating Custom Post Types / Taxonomies
+### Creating Custom Post Types and Taxonomies
 
 You can visit [https://generatewp.com](https://generatewp.com) to help build the scaffold for custom post types and taxonomies.
 
@@ -64,7 +77,7 @@ For more information on how to use ACF, see its [documentation](https://www.adva
 
 Below are the main plugins that SnapShot Interactive uses in most Wordpress websites. Others are added from time to time on an as needed basis but the ones below should cover 90-100% of what is needed from a basic wordpress site.
 
-**Vetted Plugins**
+### Vetted Plugins
 
 <table>
 
