@@ -74,11 +74,11 @@ For more information on how to use ACF, see its [documentation](https://www.adva
 
 ### Escaping before output
 
-Except in the case of WYSIWYG fields, The ACF native functions `get_field()` and `the_field()` simply return exactly what is in the database. To prevent formatting issues and improve security of the site, you should always wrap your output functions in the appropriate escaping function. For example, instead of using:
+The ACF native functions `get_field()` and `the_field()` simply return exactly what is in the database. To prevent formatting issues and improve security of the site, you should always wrap your output functions in the appropriate escaping function. For example, instead of using:
 
     echo get_field('text');
     
-...or:
+... or:
 
     the_field('text');
     
@@ -103,95 +103,50 @@ Below are the main plugins that SnapShot Interactive uses in most Wordpress webs
 ### Vetted Plugins
 
 <table>
-
-<thead>
-
-<tr>
-
-<th>Plugin</th>
-
-<th>Use</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>Advanced Custom Fields Pro (installed on all sites)</td>
-
-<td>Custom fields for backend. Create ability to add custom fields to templates pages to create a better user experience for clients when entering specific information. Requires a license key (request access from anyone on the dev team)</td>
-
-</tr>
-
-<tr>
-
-<td>Contact Form 7</td>
-
-<td>Create custom email forms</td>
-
-</tr>
-
-<tr>
-
-<td>Flamingo</td>
-
-<td>Stores CF7 form submissions in the database</td>
-
-</tr>
-
-<tr>
-
-<td>SendGrid</td>
-
-<td>SMTP mailer. Requires integration with our SSI SendGrid account.</td>
-
-</tr>
-
-<tr>
-
-<td>Yoast SEO</td>
-
-<td>SEO Plugin / Standard</td>
-
-</tr>
-
-<tr>
-
-<td>Breadcrumb NavXT</td>
-
-<td>Creates breadcrumb navigations</td>
-
-</tr>
-
-<tr>
-
-<td>Advanced Access Manager</td>
-
-<td>Manage User and Role Access to WordPress Backend and Frontend.</td>
-
-</tr>
-
-<tr>
-
-<td>SafeSVG</td>
-
-<td>Properly sanitizes SVG files for use in the media library as an acceptable image format.</td>
-
-</tr>
-
-<tr>
-
-<td>Post Types Order</td>
-
-<td>Drag and drop custom post type orders</td>
-
-</tr>
-
-</tbody>
-
+    <thead>
+        <tr>
+            <th>Plugin</th>
+            <th>Use</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Advanced Custom Fields Pro (installed on all sites)</td>
+            <td>Custom fields for backend. Create ability to add custom fields to templates pages to create a better user experience for clients when entering specific information. Requires a license key (request access from anyone on the dev team)</td>
+        </tr>
+        <tr>
+            <td>Contact Form 7</td>
+            <td>Create custom email forms</td>
+        </tr>
+        <tr>
+            <td>Flamingo</td>
+            <td>Stores CF7 form submissions in the database</td>
+        </tr>
+        <tr>
+            <td>SendGrid</td>
+            <td>SMTP mailer. Requires integration with our SSI SendGrid account.</td>
+        </tr>
+        <tr>
+            <td>Yoast SEO</td>
+            <td>SEO Plugin / Standard</td>
+        </tr>
+        <tr>
+            <td>Breadcrumb NavXT</td>
+            <td>Creates breadcrumb navigations</td>
+        </tr>
+        <tr>
+            <td>Advanced Access Manager</td>
+            <td>Manage User and Role Access to WordPress Backend and Frontend.</td>
+        </tr>
+        <tr>
+            <td>SafeSVG</td>
+            <td>Properly sanitizes SVG files for use in the media library as an acceptable image format.</td>
+        </tr>
+        <tr>
+            <td>Post Types Order</td>
+            <td>Drag and drop custom post type orders</td>
+        </tr>
+    </tbody>
 </table>
 
 ## Theme Structure
