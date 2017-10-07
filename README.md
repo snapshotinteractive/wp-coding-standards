@@ -7,6 +7,7 @@
     * [What if the CPT Data is only being used on a single page?](#what-if-the-cpt-data-is-only-being-used-on-a-single-page)
     * [Creating Custom Post Types and Taxonomies](#creating-custom-post-types-and-taxonomies)
   * [Advanced Custom Fields](#advanced-custom-fields)
+    * [Escaping before output](#escaping-before-output)
   * [Plugins](#plugins)
     * [When to Use Plugins](#when-to-use-plugins)
     * [Vetted Plugins](#vetted-plugins)
@@ -70,6 +71,24 @@ A good use case here is if you have a design for a staff directory page, and whe
 In some instances, you need editable content on archive pages, or global content such as the site's header or footer. In these instances you can either create WordPress widgets or use [ACF's options page](https://www.advancedcustomfields.com/resources/options-page/) to easily access and edit content.
 
 For more information on how to use ACF, see its [documentation](https://www.advancedcustomfields.com/resources/).
+
+### Escaping before output
+
+Except in the case of WYSIWYG fields, The ACF native functions `get_field()` and `the_field()` simply return exactly what is in the database. To prevent formatting issues and improve security of the site, you should always wrap your output functions in the appropriate escaping function. For example, instead of using:
+
+    echo get_field('text');
+    
+...or:
+
+    the_field('text');
+    
+Always use:
+
+    echo esc_html( get_field('text') );
+    
+... or another escaping function that is suitable for the situation. 
+
+In addition to escaping, it can also be a good idea to validate and sanitize user input data before printing it to the screen. For more information on validation, sanitation and escaping, see [the WordPress Codex](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data).
 
 ## Plugins
 
