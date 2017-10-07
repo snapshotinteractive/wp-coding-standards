@@ -86,7 +86,9 @@ Always use:
 
     echo esc_html( get_field('text') );
     
-... or another escaping function that is suitable for the situation. 
+... or another escaping function that is suitable for the situation. For escaping WYSIWYG fields where you want to preserve user formatting, you can use:
+
+    echo wp_kses_post( get_field('editor') );
 
 In addition to escaping, it can also be a good idea to validate and sanitize user input data before printing it to the screen. For more information on validation, sanitation and escaping, see [the WordPress Codex](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data).
 
