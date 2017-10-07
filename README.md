@@ -145,3 +145,119 @@ Below are the main plugins that SnapShot Interactive uses in most Wordpress webs
 </tbody>
 
 </table>
+
+## Theme Structure
+
+Use the following project structure for custom theme development. The SnapShot basetheme already reflects this structure with the exception of Node, Sass, or compiled files (we do not currently have an official process for using such tools or deployment, but we've included a structure for them below for guidance in the event that we do use them from time to time when appropriate). These directories are noted with an asterisk `*`.
+
+    |- acf-json/ _____________________________ # Enables Advanced Custom Fields local JSON field settings (https://www.advancedcustomfields.com/resources/local-json/)
+    |- assets/
+    |  |- img/ _______________________________ # Theme images
+    |  |- fonts/ _____________________________ # Custom/hosted fonts
+    |  |- js/
+    |    |- src/ * ___________________________ # Source JavaScript files (separate for modularity when using a compiler, but neglect this folder and use app.js for all theme scripts otherwise)
+    |    |- app.js ___________________________ # Theme scripts (if using a compiler, this is your unminified compiled script file)
+    |    |- app.min.js * _____________________ # Minified JavaScript (when using a compiler)
+    |  |- css/
+    |    |- scss/ * __________________________ # (when appripriate - See below for details)
+    |    |- app.css __________________________ # User-facing theme styles (unminified compiled CSS when using Sass)
+    |    |- app.min.css * ____________________ # Minified compiled CSS when using Sass (when appropriate)
+    |    |- login.css ________________________ # Styles for the wp-login.php page
+    |    |- layout.min.css * _________________ # Minified login styles when using Sass (when appropriate)
+    |    |- admin.css ________________________ # Styles for the WordPress Dashboard area (rarely needed, but just in case)
+    |    |- admin.min.css * __________________ # Compiled dashboard styles when using Sass (when appripriate)
+    |    |- editor.css _______________________ # Editor styles (rarely needed, but just in case)
+    |- bower_components/ * ___________________ # Frontend dependencies (when apprpriate)
+    |- inc/ __________________________________ # PHP classes and function files
+    |  |- classes/ ___________________________ # PHP classes
+    |  |- post-types/ ________________________ # PHP files registering and managing custom post types (as needed)
+    |  |- taxonomies/ ________________________ # PHP files registering and managing custom taxonomies (as needed)
+    |- languages/ ____________________________ # Translations
+    |- lib/ __________________________________ # Composer dependencies / third party libraries
+    |- node_modules/ * _______________________ # npm modules (when appropriate)
+    |- page-templates/ _______________________ # Page and post templates
+    |- partials/ _____________________________ # Template parts
+
+When using Sass, the `scss` folder should be organized further into component directories as outlined below:
+
+    |- assets/css/scss/
+    |  |- _vendor/ ___________________________ # Third party Sass libraries (Bourbon, Foundation, FontAwesome, etc.)
+    |  |- admin/ _____________________________ # Admin specific partials
+    |  |- base/
+    |    |- reset, normalize, or sanitize
+    |    |- wordpress ________________________ # Partial for WordPress default classes
+    |  |- components/
+    |    |- buttons
+    |    |- callouts
+    |    |- toggles
+    |    |- all other modular reusable UI components
+    |  |- editor/ ____________________________ # Editor specific partials (leverage placeholders to use in front-end and admin area)
+    |  |- global/ ____________________________ # Functions, mixins, placeholders, and variables
+    |  |- layout/
+    |    |- header
+    |    |- footer
+    |    |- sidebar
+    |  |- templates/
+    |    |- home page
+    |    |- single
+    |    |- archives
+    |    |- blog
+    |    |- all page, post, and custom post type specific styles
+    |  |- typography/
+    |  |- admin.scss
+    |  |- app.scss
+    |  |- editor.scss
+
+## Modular PHP
+
+In the spirit of building maintainable, modular code, try not to write PHP directly in `functions.php`. Break functions into groups that make logical sense, store them in the `inc` directory, and use `require_once` to load them in your theme. An example `functions.php` file would look something like this:
+
+```php
+<?php
+/**
+ * Theme setup.
+ */
+require_once get_template_directory() . '/inc/functions-setup.php';
+
+/**
+ * Register custom post types.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_post_type
+ */
+require_once get_template_directory() . '/inc/functions-post-types.php';
+
+/**
+ * Register navigation menus.
+ */
+require_once get_template_directory() . '/inc/functions-nav.php';
+/**
+ * Enqueue scripts and styles.
+ */
+require_once get_template_directory() . '/inc/functions-scripts.php';
+
+/**
+ * Layout functions.
+ */
+require_once get_template_directory() . '/inc/functions-layout.php';
+```
+
+Two examples of code that can be easily reused from project to project are custom post types and taxonomies. You can build those modularly, too, by using <a href="http://php.net/manual/en/class.directoryiterator.php" target="_blank">`DirectoryIterator`</a> to iterate through respective directories and load all of the php files it finds:
+
+```php
+<?php
+// Define directories for post types and taxonomies
+$directories = array(
+  'post_types'  => get_template_directory() . '/inc/post-types/',
+  'taxonomies'  => get_template_directory() . '/inc/taxonomies/'
+);
+
+foreach ( $directories as $key => $directory ) {
+  $dir = new DirectoryIterator( $directory );
+
+  foreach ( $dir as $fileinfo ) {
+    if ( ! $fileinfo->isDot() ) {
+      require $directory . $fileinfo->getFilename();
+    }
+  }
+}
+```
