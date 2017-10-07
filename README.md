@@ -7,7 +7,7 @@
     * [What if the CPT Data is only being used on a single page?](#what-if-the-cpt-data-is-only-being-used-on-a-single-page)
     * [Creating Custom Post Types and Taxonomies](#creating-custom-post-types-and-taxonomies)
   * [Advanced Custom Fields](#advanced-custom-fields)
-  * [Plugin](#plugins)
+  * [Plugins](#plugins)
     * [When to Use Plugins](#when-to-use-plugins)
     * [Vetted Plugins](#vetted-plugins)
   * [Theme Structure](#theme-structure)
