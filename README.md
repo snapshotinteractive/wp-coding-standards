@@ -225,15 +225,15 @@ To make this easier, the WordPress API includes functions that translate and esc
 
 For use in HTML
 
-* `esc_html__()`: Returns a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_html_2))
-* `esc_html_e()`: Echoes a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_html_e))
-* `esc_html_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://codex.wordpress.org/Function_Reference/esc_html_x))
+* `esc_html__()`: Returns a translated and escaped string ([link](https://developer.wordpress.org/reference/functions/esc_html__/))
+* `esc_html_e()`: Echoes a translated and escaped string ([link](https://developer.wordpress.org/reference/functions/esc_html_e/))
+* `esc_html_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://developer.wordpress.org/reference/functions/esc_html_x/))
 
 For use in attributes
 
-* `esc_attr__()`: Returns a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_attr_2))
-* `esc_attr_e()`: Echoes a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_attr_e))
-* `esc_attr_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://codex.wordpress.org/Function_Reference/esc_attr_x))
+* `esc_attr__()`: Returns a translated and escaped string ([link](https://developer.wordpress.org/reference/functions/esc_attr__/))
+* `esc_attr_e()`: Echoes a translated and escaped string ([link](https://developer.wordpress.org/reference/functions/esc_attr_e/))
+* `esc_attr_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://developer.wordpress.org/reference/functions/esc_attr_x/))
 
 ## Plugins
 
