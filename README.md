@@ -63,9 +63,40 @@ ARIA (Assistive Rich Internet Applications) is a spec from the W3C. It was creat
 
 ARIA is a descriptive layer on top of HTML to be used by screen readers. It has no effect on how elements are displayed or behave in browsers. We use these ARIA Landmark Roles (banner, navigation, main, etc.) to provide a better experience to users with disabilities.
 
-Example:
+That being said: let's not abuse ARIA. A pure semantic HTML5 solution without ARIA is always preferred. This way all devices interacting with the web page or app understand the meaning of this element.
 
-`<header id="masthead" class="site-header" role="banner"></header>`
+```html
+// Bad:
+<div role="button" tabindex="0">text</div>
+
+// Redundant:
+<button role="button">text</button>
+
+// Good:
+<button>text</button>
+```
+
+The following HTML5 elements do not require their most-used ARIA roles in most cases:
+
+```html
+// Old:
+<article role="article">
+<aside role="complementary">
+<footer role="contentinfo">
+<header role="banner">
+<main role="main">
+<nav role="navigation">
+<section role="region">
+
+// New:
+<article>
+<aside>
+<footer> (if not within an article or section element)
+<header> (if not within an article or section element)
+<main>
+<nav>
+<section>
+```
 
 ### States and Properties
 
@@ -437,7 +468,7 @@ foreach ( $directories as $key => $directory ) {
 
 ## Credits
 
-Some of the content in this document has been adapted from [10up's](https://10up.com) open source [Engineering Best Practices](https://10up.github.io/Engineering-Best-Practices/).
+Some of the content in this document has been adapted from [10up's](https://10up.com) [Engineering Best Practices](https://10up.github.io/Engineering-Best-Practices/) and [Human Made's](https://hmn.md/) [Style Guide](https://engineering.hmn.md/how-we-work/style/).
 
 ## Contributing
 
