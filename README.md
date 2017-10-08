@@ -13,6 +13,7 @@
     * [Vetted Plugins](#vetted-plugins)
   * [Theme Structure](#theme-structure)
   * [Modular PHP](#modular-php)
+  * [Contributing](#contributing)
 
 ## Default Platforms and Frameworks
 
@@ -291,3 +292,7 @@ foreach ( $directories as $key => $directory ) {
     }
 }
 ```
+
+## Contributing
+
+Please contribute via pull requests on [GitHub](https://github.com/snapshotinteractive/wp-coding-standards).
