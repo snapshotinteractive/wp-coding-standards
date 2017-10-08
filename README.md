@@ -2,17 +2,25 @@
 
   * [Default Platforms and Frameworks](#default-platforms-and-frameworks)
   * [Web Syntax Standards](#web-syntax-standards)
+  * [Accessibility](#accessibility)
+    * [ARIA Landmark Roles](#aria-landmark-roles)
+    * [States and Properties](#states-and-properties)
+    * [Accessible Forms](#accessible-forms)
   * [Custom Post Types and Taxonomies](#custom-post-types-and-taxonomies)
     * [When to Use Custom Post Types](#when-to-use-custom-post-types)
     * [What if the CPT Data is only being used on a single page?](#what-if-the-cpt-data-is-only-being-used-on-a-single-page)
     * [Creating Custom Post Types and Taxonomies](#creating-custom-post-types-and-taxonomies)
   * [Advanced Custom Fields](#advanced-custom-fields)
     * [Escaping before output](#escaping-before-output)
+  * [Internationalization](#internationalization)
+    * [Text Domains](#text-domains)
+    * [Escaping Strings](#escaping-strings)
   * [Plugins](#plugins)
     * [When to Use Plugins](#when-to-use-plugins)
     * [Vetted Plugins](#vetted-plugins)
   * [Theme Structure](#theme-structure)
   * [Modular PHP](#modular-php)
+  * [Credits](#credits)
   * [Contributing](#contributing)
 
 ## Default Platforms and Frameworks
@@ -40,6 +48,63 @@
 *   **CSS:** WordPress CSS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/)
 *   **HTML:** WordPress HTML Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/)
 *   **JavaScript:** WordPress JS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
+
+## Accessibility
+
+It’s important that our clients and their customers are able to use the products that we create for them. Accessibility means creating a web that is accessible to all people: those with disabilities and those without. We must think about people with visual, auditory, physical, speech, cognitive and neurological disabilities, and ensure that we deliver the best experience we possibly can to everyone. Accessibility best practices also make content more easily digestible by search engines. Increasingly, basic accessibility can even be a legal requirement. In all cases, an accessible web benefits everyone.
+
+At minimum, every SnapShot project should make use of ARIA Landmark roles, semantic headings, and support for alt text on images. Compliance with Section 508, or other international accessibility laws and guidelines, may be required depending on the project.
+
+We draw much of our information from two prominent accessibility guides: WCAG (Web Content Accessibility Guidelines) and Section 508.
+
+### ARIA Landmark Roles
+
+ARIA (Assistive Rich Internet Applications) is a spec from the W3C. It was created to improve accessibility of applications by providing extra information to screen readers via HTML attributes. Screen readers can already read HTML, but ARIA can help add context to content and make it easier for screen readers to interact with content.
+
+ARIA is a descriptive layer on top of HTML to be used by screen readers. It has no effect on how elements are displayed or behave in browsers. We use these ARIA Landmark Roles (banner, navigation, main, etc.) to provide a better experience to users with disabilities.
+
+Example:
+
+`<header id="masthead" class="site-header" role="banner"></header>`
+
+### States and Properties
+
+ARIA also allows us to describe certain inherent properties of elements, as well as their various states. Imagine you’ve designed a site where the main content area is split into three tabs. When the user first visits the site, the first tab will be the primary one, but how does a screen reader get to the second tab? How does it know which tab is active? How does it know which element is a tab in the first place?
+
+ARIA attributes can be added dynamically with JavaScript to help add context to your content. Thinking about the tabbed content example, it might look something like this:
+
+```html
+<ul role="tablist">
+    <li role="presentation">
+        <a href="#first-tab" role="tab" aria-selected="true" id="tab-panel-1">Panel 1</a>
+    </li>
+    <li role="presentation">
+        <a href="#second-tab" role="tab" aria-selected="false" id="tab-panel-2">Panel 2</a>
+    </li>
+</ul>
+
+<div role="tabpanel" aria-hidden="false" aria-labelledby="tab-panel-1">
+    <h2 id="first-tab">Tab Panel Heading</h2>
+</div>
+
+<div role="tabpanel" aria-hidden="true" aria-labelledby="tab-panel-2">
+    <h2 id="second-tab">Second Tab Panel Heading</h2>
+</div>
+```
+
+You can see how effortless it is to make our tabbed interface accessible to screen readers. All we need to do is add context.
+
+### Accessible Forms
+
+Forms are one of the biggest areas of failure when it comes to accessibility. Fortunately, there are a few key things that we can do to ensure they meet accessibility standards.
+
+Each form field should have its own `<label>`. The label tag, along with the for attribute, can help explicitly associate a label to a form element adding readability to the form element for screen readers.
+
+Form elements should also be logically grouped using the `<fieldset>` tag. Grouped form elements can be helpful for people who depend on screen readers or those with cognitive disabilities.
+
+Finally, we should ensure that all interactive elements are keyboard (or tab) navigable, providing easy use for people with vision or mobility disabilities. In general, the tab order should be dictated by a logical source order of elements. If you feel the need to change the tab order of certain elements, it likely indicates that you should rework the markup to flow in a logical order.
+
+Adding `tabindex` to elements to force a different tab order can become confusing to users and a maintenance issue to developers if/when they have to make changes to the markup. There are cases, however, when we need to add or remove certain elements from the tab order. In these cases, set `tabindex="0"` to allow an element (e.g. a `<div>`) to receive focus in its natural order, or set `tabindex="-1"` to skip an element (e.g. a modal dialog box).
 
 ## Custom Post Types and Taxonomies
 
@@ -77,21 +142,98 @@ For more information on how to use ACF, see its [documentation](https://www.adva
 
 The ACF native functions `get_field()` and `the_field()` simply return exactly what is in the database. To prevent formatting issues and improve security of the site, you should always wrap your output functions in the appropriate escaping function. For example, instead of using:
 
-    echo get_field('text');
+```php
+echo get_field('text');
+```
     
 ... or:
 
-    the_field('text');
+```php
+the_field('text');
+```
     
 Always use:
 
-    echo esc_html( get_field('text') );
+```php
+echo esc_html( get_field('text') );
+```
     
 ... or another escaping function that is suitable for the situation. For escaping WYSIWYG fields where you want to preserve user formatting, you can use:
 
-    echo wp_kses_post( get_field('editor') );
+```php
+echo wp_kses_post( get_field('editor') );
+```
 
 In addition to escaping, it can also be a good idea to validate and sanitize user input data before printing it to the screen. For more information on validation, sanitation and escaping, see [the WordPress Codex](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data).
+
+## Internationalization
+
+All text strings in a project should be internationalized using core localization functions. Even if the project does not currently dictate a need for translatable strings, this practice ensures translation-readiness should a future need arise.
+
+WordPress provides a myriad of localization functionality. Engineers should familiarize themselves with features such as pluralization and disambiguation so translations are flexible and translators have the information they need to work accurately.
+
+Samuel Wood (Otto) put together a guide to WordPress internationalization best practices, and engineers should take time to familiarize themselves with its guidance: [Internationalization: You’re probably doing it wrong](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
+
+It’s important to note that the strings passed to translation functions should always be literal strings, never variables or named constants, and code shouldn’t use string interpolation to inject values into either string. Most tools used to create translations rely on GNU gettext scanning source code for translation functions. PHP code won’t be interpreted, only scanned like it was a block of plain text and stored similarly. If WordPress’s translation APIs can’t find an exact match for a string inside the translation files, it won’t be able to translate the string. Instead, use `printf` formatting codes inside the string to be translated and pass the translated version of that string to `sprintf()` to fill in the values.
+
+For example:
+
+```php
+<?php
+// This will confuse translation software
+$string = __( "$number minutes left", 'plugin-domain' );
+// So will this
+define( 'MINUTES_LEFT', '%d minutes left' );
+$string = __( MINUTES_LEFT, 'plugin-domain' );
+// Correct way to do a simple translation 
+$string = sprintf( __( '%d minutes left', 'plugin-domain' ), $number );
+// A more complex translation using _n() for plurals
+$string = sprintf( _n( '%d minute left', '%d minutes left',  $number, 'plugin-domain' ), $number );
+?>
+```
+
+Localizing a project differs from the core approach in two distinct ways:
+
+* A unique text domain should be used with all localization functions
+* Internationalized output should always be escaped
+
+### Text Domains
+
+Each project should leverage a unique text domain for its strings. Text domains should be lowercase, alphanumeric, and use hyphens to separate multiple words: `ssi-project-name`.
+
+Like the translated strings they accompany, text domains should never be stored in a variable or named constant when used with core localization functions, as this practice can often produce unexpected results. Translation tools won’t interpret PHP code, only scan it like it was plain text. They won’t be able to assign the text domain correctly if it’s not there in plain text.
+
+```php
+<?php
+// Always this
+$string = __( 'Hello World', 'plugin-domain' );
+// Never this
+$string = __( 'Hello World', $plugin_domain );
+// Or this
+define( 'PLUGIN_DOMAIN', 'plugin-domain' );
+$string = __( 'Hello World', PLUGIN_DOMAIN );
+?>
+```
+
+If the code is for release as a plugin or theme in the WordPress.org repositories, the text domain must match the directory slug for the project in order to ensure compatibility with the WordPress language pack delivery system. The text domain should be defined in the “Text Domain” header in the plugin or stylesheet headers, respectively, so the community can use GlotPress to provide new translations.
+
+### Escaping Strings
+
+Most of WordPress’s translation functions don’t escape output by default. So, it’s important to escape the translated strings like any other content.
+
+To make this easier, the WordPress API includes functions that translate and escape in a single step. Developers are encouraged to use these functions to simplify their code:
+
+For use in HTML
+
+* `esc_html__()`: Returns a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_html_2))
+* `esc_html_e()`: Echoes a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_html_e))
+* `esc_html_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://codex.wordpress.org/Function_Reference/esc_html_x))
+
+For use in attributes
+
+* `esc_attr__()`: Returns a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_attr_2))
+* `esc_attr_e()`: Echoes a translated and escaped string ([link](https://codex.wordpress.org/Function_Reference/esc_attr_e))
+* `esc_attr_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://codex.wordpress.org/Function_Reference/esc_attr_x))
 
 ## Plugins
 
@@ -292,6 +434,10 @@ foreach ( $directories as $key => $directory ) {
     }
 }
 ```
+
+## Credits
+
+Some of the content in this document has been adapted from [10up's](https://10up.com) open source [Engineering Best Practices](https://10up.github.io/Engineering-Best-Practices/).
 
 ## Contributing
 
