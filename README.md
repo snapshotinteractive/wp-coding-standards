@@ -467,7 +467,9 @@ require_once get_template_directory() . '/inc/functions-scripts.php';
 require_once get_template_directory() . '/inc/functions-layout.php';
 ```
 
-Two examples of code that can be easily reused from project to project are custom post types and taxonomies. You can build those modularly, too, by using [`DirectoryIterator`](http://php.net/manual/en/class.directoryiterator.php) to iterate through respective directories and load all of the php files it finds:
+Two examples of code that can be easily reused from project to project are custom post types and taxonomies. You can build those modularly, too, by using [`DirectoryIterator`](http://php.net/manual/en/class.directoryiterator.php) to iterate through respective directories and load all of the php files it finds.
+
+Note that this will search for files in each directory with prefixes that match the key of each item set in the `$directories` array. This helps avoid problems in the event that the wrong files are moved into the `inc/post-types` or `inc/taxonomies` directories by mistake. For the stake of maintaining standards, we use `post-type` and `taxonomy` as prefixes.
 
 ```php
 <?php
