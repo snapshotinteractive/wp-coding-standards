@@ -40,6 +40,8 @@
     *   iPhone / Android
     *   iPad / Android Tablet
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Web Syntax Standards
 
 >> **NOTE: This section is under construction and reconsideration.**
@@ -50,6 +52,8 @@
 *   **CSS:** WordPress CSS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/)
 *   **HTML:** WordPress HTML Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/html/)
 *   **JavaScript:** WordPress JS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
+
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
 
 ## Accessibility
 
@@ -139,6 +143,8 @@ Finally, we should ensure that all interactive elements are keyboard (or tab) na
 
 Adding `tabindex` to elements to force a different tab order can become confusing to users and a maintenance issue to developers if/when they have to make changes to the markup. There are cases, however, when we need to add or remove certain elements from the tab order. In these cases, set `tabindex="0"` to allow an element (e.g. a `<div>`) to receive focus in its natural order, or set `tabindex="-1"` to skip an element (e.g. a modal dialog box).
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Custom Post Types and Taxonomies
 
 ### When to Use Custom Post Types
@@ -158,6 +164,8 @@ Some times you’ll have information that doesn’t need to be shared across the
 You can visit [https://generatewp.com](https://generatewp.com) to help build the scaffold for custom post types and taxonomies.
 
 WP-CLI can also be used
+
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
 
 ## Advanced Custom Fields
 
@@ -198,6 +206,8 @@ echo wp_kses_post( get_field('editor') );
 ```
 
 In addition to escaping, it can also be a good idea to validate and sanitize user input data before printing it to the screen. For more information on validation, sanitation and escaping, see [the WordPress Codex](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data).
+
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
 
 ## Internationalization
 
@@ -272,6 +282,8 @@ For use in attributes
 * `esc_attr_e()`: Echoes a translated and escaped string ([link](https://developer.wordpress.org/reference/functions/esc_attr_e/))
 * `esc_attr_x()`: Returns a translated and escaped string, passing a context to the translation function ([link](https://developer.wordpress.org/reference/functions/esc_attr_x/))
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Plugins
 
 ### When to Use Plugins
@@ -328,6 +340,8 @@ Below are the main plugins that SnapShot Interactive uses in most Wordpress webs
         </tr>
     </tbody>
 </table>
+
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
 
 ## Theme Structure
 
@@ -417,6 +431,8 @@ end_of_line = crlf
 trim_trailing_whitespace = false
 ```
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Modular PHP
 
 In the spirit of building maintainable, modular code, try not to write PHP directly in `functions.php`. Break functions into groups that make logical sense, store them in the `inc` directory, and use `require_once` to load them in your theme. An example `functions.php` file would look something like this:
@@ -472,10 +488,16 @@ foreach ( $directories as $key => $directory ) {
 }
 ```
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Credits
 
 Some of the content in this document has been adapted from [10up's](https://10up.com) [Engineering Best Practices](https://10up.github.io/Engineering-Best-Practices/) and [Human Made's](https://hmn.md/) [Style Guide](https://engineering.hmn.md/how-we-work/style/).
 
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
+
 ## Contributing
 
 Please contribute via pull requests on [GitHub](https://github.com/snapshotinteractive/wp-coding-standards).
+
+[BACK TO TOP](#snapshot-interactive-wordpress-coding-standards)
