@@ -473,8 +473,8 @@ Two examples of code that can be easily reused from project to project are custo
 <?php
 // Define directories for post types and taxonomies
 $directories = array(
-  'post_types'  => get_template_directory() . '/inc/post-types/',
-  'taxonomies'  => get_template_directory() . '/inc/taxonomies/'
+  'post-type'   => get_template_directory() . '/inc/post-types/',
+  'taxonomy'    => get_template_directory() . '/inc/taxonomies/'
 );
 
 foreach ( $directories as $key => $directory ) {
@@ -487,7 +487,7 @@ foreach ( $directories as $key => $directory ) {
             $basename = $fileinfo->getBasename('.php');
 
             // Check filename for prefix before loading
-            if ( substr( $basename, 0, 10 ) === 'post-type-' || substr( $basename, 0, 9 ) === 'taxonomy-' )
+            if ( substr( $basename, 0, strlen($key) + 1 ) === $key . '-' )
                 require_once $directory . $fileinfo->getFilename();
         }
     }
