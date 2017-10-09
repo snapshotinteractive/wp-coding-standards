@@ -1,0 +1,22 @@
+# Example editor config
+# Matches WordPress coding syntax standards with some minor variations
+
+# http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{.jshintrc,*.json,*.yml}]
+indent_size = 2
+
+[{*.txt,wp-config-sample.php}]
+end_of_line = crlf
+
+[*.md]
+trim_trailing_whitespace = false
