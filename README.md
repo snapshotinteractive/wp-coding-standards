@@ -161,7 +161,7 @@ Some times you’ll have information that doesn’t need to be shared across the
 
 ### Creating Custom Post Types and Taxonomies
 
-You can visit [https://generatewp.com](https://generatewp.com) to help build the scaffold for custom post types and taxonomies. 
+You can visit [https://generatewp.com](https://generatewp.com) to help build the scaffold for custom post types and taxonomies.
 
 WP-CLI can also be used, per the [Codex](https://make.wordpress.org/cli/2013/03/29/scaffolding-custom-post-types-and-taxonomies/).
 
