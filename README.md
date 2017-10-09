@@ -42,7 +42,9 @@
 
 ## Web Syntax Standards
 
-**NOTE: This section is under construction and reconsideration. For the moment, please stick to WordPress coding and syntax standard for HTML, PHP and JavaScript. Use a simple, clean CSS syntax that works for you, but keep legibility, modularity and maintainability at top of mind.**
+>> **NOTE: This section is under construction and reconsideration.**
+>> For the moment, please stick to WordPress coding and syntax standard for HTML, PHP and JavaScript.
+>> Use a simple, clean CSS syntax that works for you, but keep legibility, modularity and maintainability at top of mind.
 
 *   **PHP:** WordPress PHP Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/)
 *   **CSS:** WordPress CSS Standards: [https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/](https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/)
@@ -198,6 +200,10 @@ echo wp_kses_post( get_field('editor') );
 In addition to escaping, it can also be a good idea to validate and sanitize user input data before printing it to the screen. For more information on validation, sanitation and escaping, see [the WordPress Codex](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data).
 
 ## Internationalization
+
+>> **NOTE: The following standards are currently considered aspirational.**
+>> Due to time/budget restraints on many projects, we may not be able to fully implement I18n on every project.
+>> For now, we will implement this set of standards into our workflow towards the end of projects as budget and time allows.
 
 All text strings in a project should be internationalized using core localization functions. Even if the project does not currently dictate a need for translatable strings, this practice ensures translation-readiness should a future need arise.
 
