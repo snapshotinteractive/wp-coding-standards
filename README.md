@@ -167,7 +167,7 @@ WP-CLI can also be used, per the [Codex](https://make.wordpress.org/cli/2013/03/
 
 [**BACK TO TOP**](#snapshot-interactive-wordpress-coding-standards)
 
-## Advanced Custom Fields  
+## Advanced Custom Fields
 
 The general rule of thumb is that all content on every page or post should be easily manageable by the client once a build is complete. In many cases we can achieve this by simply using the WordPress content editor, the post thumbnail, or post/taxonomy queries to find the content we need from content areas that are already built into WordPress. However, for custom sites this is often insufficient, and we rule out page builder plugins because of their overhead and general clunkiness.
 
