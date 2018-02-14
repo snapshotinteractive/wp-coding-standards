@@ -1,0 +1,12 @@
+**/*.min.js
+**/node_modules/**
+**/lib/*
+**/dist/*
+**/node_modules/*
+**/assets/js/vendor/**
+**/modules/**/vendor/**
+**/components/**/vendor/**
+vendor
+vandor/*
+wpcs
+wpcs/*
